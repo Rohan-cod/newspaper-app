@@ -32,6 +32,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+DISABLE_COLLECTSTATIC=1
+
 
 # Application definition
 
