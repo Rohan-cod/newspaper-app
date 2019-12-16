@@ -11,5 +11,9 @@
   {{ form.as_p }}
   <button class="btn btn-success ml-2" type="submit">Log In</button>
 </form>
+<br>
+<p><strong>-- OR --</strong></p>
+  <a href="{% url 'social:begin' 'github' %}" class="btn btn-success ml-2">Login with GitHub</a><br><br>
+  <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-success ml-2">Login with Facebook</a>
 
 {% endblock content %}
