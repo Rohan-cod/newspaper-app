@@ -22,6 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'rj#k+c_xc74o3ln8(170pb9wy@us@-5a$*%h(2007qt53w(o)+'
 
+SOCIAL_AUTH_GOOGLE_KEY = "244148125235-3fg0ft534ktn89ldgdlov0k3thmiq49v.apps.googleusercontent.com"
+SOCIAL_AUTH_GOOGLE_SECRET = "O3GwC8hSylVtspcsQ5Qa0Xuk"
+
 SOCIAL_AUTH_FACEBOOK_KEY = '2876127119066596'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'a34691d46e35146e7c53d1035ac086b7'
 
@@ -31,8 +34,6 @@ SOCIAL_AUTH_GITHUB_SECRET = '2f3fb3544b31c60c9607d89228ac81ef235820f7'
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-
-DISABLE_COLLECTSTATIC=1
 
 
 # Application definition
@@ -146,6 +147,9 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/settings/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/settings/'
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
