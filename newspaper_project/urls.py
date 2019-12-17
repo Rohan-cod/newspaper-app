@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import path, include 
 from django.contrib.auth.views import LoginView
+from articles import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +28,6 @@ urlpatterns = [
     path('articles/', include('articles.urls')),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     path('', include('pages.urls')),  
+    url(r'^settings/$', views.settings, name='settings'),
+    url(r'^settings/password/$', views.password, name='password'),
 ]
