@@ -16,7 +16,7 @@ And additional requirements are in **Pipfile**.
   * Fork the Repository.
   * Clone the repository to your local machine `$ git clone https://github.com/<your-github-username>/newspaper-app.git`
   * Change directory to newspaper-app `$ cd newspaper-app`
-  * Install pipenv `$ pip install pipenv`  
+  * Install pipenv `$ pip3 install pipenv`  
   * Create a virtual environment and install all requirements from Pipfile `$ pipenv install`  
   * Activate the env: `$ pipenv shell`
   * Make migrations `$ python manage.py makemigrations`
