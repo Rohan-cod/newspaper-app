@@ -6,10 +6,13 @@ from .views import (
     ArticleDetailView,
     ArticleDeleteView,
     ArticleCreateView,
+    ArticleCommentView,
 )
 urlpatterns = [
     path('<int:pk>/edit/',
          ArticleUpdateView.as_view(), name='article_edit'),
+    path('<int:pk>/comment/',
+         ArticleCommentView.as_view(), name='add_comment'),
     path('<int:pk>/',
          ArticleDetailView.as_view(), name='article_detail'), 
     path('<int:pk>/delete/',
