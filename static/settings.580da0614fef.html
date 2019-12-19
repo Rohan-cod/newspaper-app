@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Settings</h2>
+
+  <h3>GitHub</h3>
+  {% if github_login %}
+    <p>Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
+    {% if can_disconnect %}
+      <form method="post" action="{% url 'social:disconnect' 'github' %}">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Disconnect from GitHub</button>
+      </form>
+    {% else %}
+      <button class="btn btn-danger" type="button" disabled>Disconnect from GitHub</button>
+      <p style="color: red">You must <a href="{% url 'password' %}">define a password</a> for your account before disconnecting from Github.</p>
+    {% endif %}
+  {% else %}
+    <a href="{% url 'social:begin' 'github' %}">Connect to GitHub</a>
+  {% endif %}
+
+  <h3>Google</h3>
+  {% if google_login %}
+    <p>Connected as <a href="https://google.com/{{ google_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ google_login.extra_data.access_token.screen_name }}</a></p>
+    {% if can_disconnect %}
+      <form method="post" action="{% url 'social:disconnect' 'google' %}">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Disconnect from Google</button>
+      </form>
+    {% else %}
+      <button class="btn btn-danger" type="button" disabled>Disconnect from Google</button>
+      <p style="color: red">You must <a href="{% url 'password' %}">define a password</a> for your account before disconnecting from Google.</p>
+    {% endif %}
+  {% else %}
+    <a href="{% url 'social:begin' 'google' %}">Connect to Google</a>
+  {% endif %}
+
+  <h3>Facebook</h3>
+  {% if facebook_login %}
+    <p>Connected as <a href="https://facebook.com/{{ facebook_login.extra_data.id }}/" target="_blank">{{ facebook_login.extra_data.id }}</a></p>
+    {% if can_disconnect %}
+      <form method="post" action="{% url 'social:disconnect' 'facebook' %}">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Disconnect from Facebook</button>
+      </form>
+    {% else %}
+      <button class="btn btn-danger" type="button" disabled>Disconnect from Facebook</button>
+      <p style="color: red">You must <a href="{% url 'password' %}">define a password</a> for your account before disconnecting from Facebook.</p>
+    {% endif %}
+  {% else %}
+    <a href="{% url 'social:begin' 'facebook' %}">Connect to Facebook</a>
+  {% endif %}
+
+{% endblock %}
