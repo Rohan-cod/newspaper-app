@@ -3,7 +3,6 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
 
-
 from .models import Article, Comment
 
 from social_django.models import UserSocialAuth
@@ -14,10 +13,10 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 
 
-
 @login_required
 def home(request):
-    return render(request, 'templates/home.html')
+    return render(request, 'home.html')
+
 
 @login_required
 def settings(request):
@@ -40,12 +39,13 @@ def settings(request):
 
     can_disconnect = (user.social_auth.count() > 1 or user.has_usable_password())
 
-    return render(request, 'templates/settings.html', {
+    return render(request, 'settings.html', {
         'github_login': github_login,
         'google_login': google_login,
         'facebook_login': facebook_login,
         'can_disconnect': can_disconnect
     })
+
 
 @login_required
 def password(request):
@@ -65,7 +65,8 @@ def password(request):
             messages.error(request, 'Please correct the error below.')
     else:
         form = PasswordForm(request.user)
-    return render(request, 'templates/password.html', {'form': form})
+    return render(request, 'password.html', {'form': form})
+
 
 class ArticleListView(LoginRequiredMixin, ListView):
     model = Article
@@ -108,12 +109,11 @@ class ArticleCreateView(LoginRequiredMixin, CreateView):
     login_url = 'login'
 
     def form_valid(self, form):
-
         form.instance.author = self.request.user
         return super().form_valid(form)
 
 
-class ArticleCommentView(LoginRequiredMixin,CreateView):
+class ArticleCommentView(LoginRequiredMixin, CreateView):
     model = Comment
     fields = ('comment',)
     template_name = 'add_comment.html'
@@ -122,6 +122,3 @@ class ArticleCommentView(LoginRequiredMixin,CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-
-
-
