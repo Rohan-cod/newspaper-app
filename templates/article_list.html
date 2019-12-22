@@ -12,9 +12,8 @@
       </div>
       <div class="card-body">
         <p>{{ article.body }}</p>
-        <!-- Changes start here! -->
         <a href="{% url 'article_edit' article.pk %}">Edit</a> |
-        <a href="{% url 'article_delete' article.pk %}">Delete</a>
+        <a href="{% url 'article_delete' article.pk %}">Delete</a> | <a href="{% url 'comment_new' article.pk %}">Comment</a>
       </div>
       <div class="card-footer">
         {% for comment in article.comments.all %}
