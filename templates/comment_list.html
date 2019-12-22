@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Comments{% endblock title %}
+
+{% block content %}
+  {% for article in object_list %}
+    <span class="font-weight-bold">{{ article.title }}</span>
+    <hr align="left" width="80%" noshade>
+    {% for comment in article.comments.all %}
+      <p>
+        <span class="font-weight-bold">{{ comment.author }} &middot;</span>
+        {{ comment }}
+      </p>
+
+    {% endfor %}
+    <br>
+    <br>
+  {% endfor %}
+{% endblock content %}
