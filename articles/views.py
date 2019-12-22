@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy 
 
-from .models import Article
+from .models import Article,Comment
 from social_django.models import UserSocialAuth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AdminPasswordChangeForm, PasswordChangeForm
@@ -105,3 +105,13 @@ class ArticleCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
     	form.instance.author = self.request.user
     	return super().form_valid(form)
+
+class CommentCreateView(LoginRequiredMixin, CreateView):
+    model = Comment
+    template_name = 'Comment_new.html'
+    fields = ('article', 'comment')
+    login_url = 'login'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
