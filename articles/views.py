@@ -99,7 +99,7 @@ class ArticleDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 class ArticleCreateView(LoginRequiredMixin, CreateView):
     model = Article
     template_name = 'article_new.html'
-    fields = ('title', 'body', 'author',)
+    fields = ('title', 'body',)
     login_url = 'login'
 
     def form_valid(self, form):
@@ -109,9 +109,14 @@ class ArticleCreateView(LoginRequiredMixin, CreateView):
 class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Comment
     template_name = 'Comment_new.html'
-    fields = ('article', 'comment')
+    fields = ('article','comment')
     login_url = 'login'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+class CommentListView(LoginRequiredMixin, ListView):
+    model = Article
+    template_name = 'comment_list.html'
+    login_url = 'login'
