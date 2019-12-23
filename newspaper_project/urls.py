@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf import settings
 from django.urls import path, include 
 from django.contrib.auth.views import LoginView
 from articles import views
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,3 +33,7 @@ urlpatterns = [
     url(r'^settings/$', views.settings, name='settings'),
     url(r'^settings/password/$', views.password, name='password'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
