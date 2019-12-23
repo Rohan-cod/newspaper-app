@@ -9,7 +9,7 @@
   <h2>{{ object.title }}</h2>
     <p>by {{ object.author }} | {{ object.date }}</p>
     <p>{{ object.body }}</p>
-    <img src="{{ post.cover.url}}" alt="NO IMAGE:(">
+    <img src="{{ Article.pic.url}}" alt="NO IMAGE:(">
   </div>
 
   <p><a href="{% url 'article_edit' article.pk %}">Edit</a> |
