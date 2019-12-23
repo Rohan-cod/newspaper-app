@@ -6,7 +6,7 @@
   {% for article in object_list %}
     <div class="card">
       <div class="card-header">
-        <span class="font-weight-bold">{{ article.title }}</span> &middot;
+        <a href="{% url 'article_detail' article.pk %}"><span class="font-weight-bold">{{ article.title }}</span></a> &middot;
         <span class="text-muted">by {{ article.author }} |
         {{ article.date }}</span>
       </div>
