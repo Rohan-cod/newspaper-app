@@ -31,7 +31,7 @@ SOCIAL_AUTH_FACEBOOK_SECRET = 'a34691d46e35146e7c53d1035ac086b7'
 SOCIAL_AUTH_GITHUB_KEY = '73d9ea86df0058462b6a'
 SOCIAL_AUTH_GITHUB_SECRET = '2f3fb3544b31c60c9607d89228ac81ef235820f7'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
     'articles.apps.ArticlesConfig',
-    #'social_django',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -144,9 +144,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 STATIC_URL = '/static/'
+STATIC_ROOT= os.path.join(BASE_DIR,'static_media/')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'users.CustomUser'
 

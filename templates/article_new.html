@@ -2,8 +2,9 @@
 
 {% block content %}
     <h1>New article</h1>
-    <form action="" method="post">{% csrf_token %}
-      {{ form.as_p }}
-      <button class="btn btn-success ml-2" type="submit">Save</button>
+    <form method="post" enctype="multipart/form-data">
+    	{% csrf_token %}
+    	{{ form.as_p }}
+    	<button class="btn btn-success ml-2" type="submit">Submit New Post</button>
     </form>
 {% endblock content %}

@@ -3,6 +3,8 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
 
+from .forms import ArticleForm
+
 from .models import Article, Comment
 from social_django.models import UserSocialAuth
 from django.contrib.auth.decorators import login_required
@@ -81,8 +83,9 @@ class ArticleDetailView(LoginRequiredMixin, DetailView):
 
 class ArticleUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Article
-    fields = ('title', 'body', 'pic')
+    form_class = ArticleForm
     template_name = 'article_edit.html'
+    success_url = reverse_lazy('article_list')
     login_url = 'login'
 
     def test_func(self):
@@ -103,8 +106,9 @@ class ArticleDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class ArticleCreateView(LoginRequiredMixin, CreateView):
     model = Article
+    form_class = ArticleForm
     template_name = 'article_new.html'
-    fields = ('title', 'body', 'pic')
+    success_url = reverse_lazy('article_list')
     login_url = 'login'
 
     def form_valid(self, form):
