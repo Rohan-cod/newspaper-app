@@ -18,7 +18,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "newspaper_project.settings.dev")
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'rj#k+c_xc74o3ln8(170pb9wy@us@-5a$*%h(2007qt53w(o)+'
 
@@ -62,7 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #'social_django.middleware.SocialAuthExceptionMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'newspaper_project.urls'
@@ -166,4 +166,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'templates')]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
-'whitenoise.middleware.WhiteNoiseMiddleware',
+
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "newspaper_project.settings.dev")
