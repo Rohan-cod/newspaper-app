@@ -14,6 +14,6 @@ from django.core.wsgi import get_wsgi_application
 import django.core.handlers.wsgi
 application = django.core.handlers.wsgi.WSGIHandler()
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'newspaper_project.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'newspaper_project.settings.dev')
 
 application = get_wsgi_application()
