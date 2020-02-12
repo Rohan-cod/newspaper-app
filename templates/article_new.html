@@ -6,5 +6,24 @@
     	{% csrf_token %}
     	{{ form.as_p }}
     	<button class="btn btn-success ml-2" type="submit">Submit New Post</button>
+    	
     </form>
+    <br>
+    <button class="btn btn-success ml-2" onclick="specj()">Voice Input</button>
+
+
+    <script type="text/javascript" async="true" defer="true">
+
+    	function specj() {
+    		const { spawn } = require('child_process');
+	    	const spec = spawn('python', ['spre.py']);
+	    	const tex="";
+	    	spec.stdout.on('data', function(data){
+	    		tex += toString(data);
+	    	});
+	    	document.getElementById("bod").value = tex;
+    	}
+    	
+
+    </script>
 {% endblock content %}
