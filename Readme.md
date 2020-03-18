@@ -23,6 +23,22 @@ And additional requirements are in **Pipfile**.
   * Migrate the changes to the database `$ python manage.py migrate`
   * Create superuser `$ python manage.py createsuperuser`
   * Run the server `$ python manage.py runserver`
+  
+## Deployment
+Here's a list of steps to be followed for deploying an app to heroku:
+
+  * Run pipenv lock to generate the appropriate Pipfile.lock `$ pipenv lock`
+  * Then create a Procfile which tells Heroku how to run the remote server where our code will live. `$ touch Procfile`
+  * For now we’re telling Heroku to use gunicorn as our production server and look in our mb_project.wsgi file for further instructions. `Update Procfile with - web: gunicorn <project_name>.wsgi --log-file - `
+  * Next install [gunicorn](https://gunicorn.org) which we’ll use in production while still using Django’s internal server for local development use. `$ pipenv install gunicorn==19.9.0`
+  * Finally update ALLOWED_HOSTS with '*' in settings.py file.
+  * push the updates to the GitHub repository.
+  * Login to heroku. `$ heroku login`
+  * Create a new heroku app. `$ heroku create <app_name>`
+  * Set git to use the name of your new app when you push to Heroku. `$ heroku git:remote -a <app_name>`
+  * If there are no static files run `$ heroku config:set DISABLE_COLLECTSTATIC=1`
+  * Push the code to Heroku. `$ git push heroku master`
+  * Add free scaling so the app is actually running online. `$ heroku ps:scale web=1`
 
 ## Contributing
 
