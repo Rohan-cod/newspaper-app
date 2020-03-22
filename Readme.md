@@ -1,7 +1,7 @@
 
 # Newspaper App
 
-A web app made using `django` framework. The frontend is made using `html` and `bootstrap` and `sqlite3` is used as the database. You can add articles which can be viewed by anyone. Just make an account and you are good to go. To see a live demo [click here](https://r-news.herokuapp.com).
+A web app made using `django` framework. The frontend is made using `html` and `bootstrap` and `sqlite3` is used as the database. You can add articles which can be viewed by anyone. Just make an account and you are good to go.
 
 ## Requirements
 
