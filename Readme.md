@@ -29,7 +29,7 @@ Here's a list of steps to be followed for deploying an app to heroku:
 
   * Run pipenv lock to generate the appropriate Pipfile.lock `$ pipenv lock`
   * Then create a Procfile which tells Heroku how to run the remote server where our code will live. `$ touch Procfile`
-  * For now we’re telling Heroku to use gunicorn as our production server and look in our mb_project.wsgi file for further instructions. `Update Procfile with - web: gunicorn <project_name>.wsgi --log-file - `
+  * For now we’re telling Heroku to use gunicorn as our production server and look in our <project-file-name>.wsgi file for further instructions. `Update Procfile with - web: gunicorn <project_name>.wsgi --log-file - `
   * Next install [gunicorn](https://gunicorn.org) which we’ll use in production while still using Django’s internal server for local development use. `$ pipenv install gunicorn==19.9.0`
   * Finally update ALLOWED_HOSTS with '*' in settings.py file.
   * push the updates to the GitHub repository.
