@@ -2,9 +2,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
-
+from django.template.loader import render_to_string
 from .forms import ArticleForm
-
+from django.http import JsonResponse
 from .models import Article, Comment
 from social_django.models import UserSocialAuth
 from django.contrib.auth.decorators import login_required
@@ -73,6 +73,17 @@ class ArticleListView(LoginRequiredMixin, ListView):
     model = Article
     template_name = 'article_list.html'
     login_url = 'login'
+    paginate_by = 5
+    ordering = ['-date']
+
+class MyArticleListView(LoginRequiredMixin, ListView):
+    model = Article
+    template_name = 'my_articles.html'
+    login_url = 'login'
+    paginate_by = 5
+    ordering = ['-date']
+    def get_queryset(self):
+        return Article.objects.filter(author=self.request.user)
 
 
 class ArticleDetailView(LoginRequiredMixin, DetailView):
@@ -131,3 +142,27 @@ class CommentListView(LoginRequiredMixin, DetailView):
     model = Article
     template_name = 'comment_list.html'
     login_url = 'login'
+
+
+def search_view(request):
+    ctx = {}
+    url_parameter = request.GET.get("q")
+
+    if url_parameter:
+        articles = Article.objects.filter(title__icontains=url_parameter)
+    else:
+        articles = Article.objects.all()
+
+    ctx["articles"] = articles
+
+    if request.is_ajax():
+        html = render_to_string(
+            template_name="articles-results-partial.html", 
+            context={"articles": articles}
+        )
+
+        data_dict = {"html_from_view": html}
+
+        return JsonResponse(data=data_dict, safe=False)
+
+    return render(request, "article_search.html", context=ctx)

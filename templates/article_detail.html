@@ -7,12 +7,21 @@
 
     <!-- -->
   <h2>{{ object.title }}</h2>
-    <p>by {{ object.author }} | {{ object.date }}</p>
+    <p><i class="fa fa-user"></i> {{ object.author }} &nbsp;|&nbsp; <i class="fa fa-calendar"></i> {{ object.date }}</p>
     <p>{{ object.body }}</p>
     <img src="{{ object.pic.url}}" alt="NO IMAGE:(">
   </div>
+  <br>
+  {% if object.author == user %}
+  <p><a href="{% url 'article_edit' article.pk %}"><i class="fa fa-pencil"></i></a> |
+    <a href="{% url 'article_delete' article.pk %}"><i class="fa fa-trash"></i></a> | <a href="{% url 'comment_new' article.pk %}"><i class="fa fa-comments"></i></a></p>
 
-  <p><a href="{% url 'article_edit' article.pk %}">Edit</a> |
-    <a href="{% url 'article_delete' article.pk %}">Delete</a></p>
-  <p>Back to <a href="{% url 'article_list' %}">All Articles</a>.</p>
+  {% else %}
+
+    <a href="{% url 'comment_new' article.pk %}"><i class="fa fa-comments"></i></a>
+
+  {% endif %}
+  <br>
+  
+  <p>Back to <a href="{% url 'article_list' %}"><i class="fa fa-home"></i></a>.</p>
 {% endblock content %}

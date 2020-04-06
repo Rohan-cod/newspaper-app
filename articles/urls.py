@@ -8,6 +8,8 @@ from .views import (
     ArticleCreateView,
     CommentCreateView,
     CommentListView,
+    MyArticleListView,
+    search_view
 )
 urlpatterns = [
     path('<int:pk>/edit/',
@@ -21,4 +23,6 @@ urlpatterns = [
     path('new/', ArticleCreateView.as_view(), name='article_new'),
     path('', ArticleListView.as_view(), name='article_list'),
     path('comments/<int:pk>/', CommentListView.as_view(), name='comments_list'),
+    path('myarticles/', MyArticleListView.as_view(), name='my_articles_list'),
+    path('search/', search_view, name='search'),
 ]

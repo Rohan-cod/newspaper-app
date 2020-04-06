@@ -1,29 +1,25 @@
 {% extends 'base.html' %}
-
-{% block title %}Articles{% endblock title %}
+{% block title %}Notes{% endblock title %}
 
 {% block content %}
+  <h1>Django Newspaper App</h1>
+  <hr>
+
+  <h2>Articles by {{user.username}} <i class="fa fa-arrow-circle-down"></i></h2>
+  <br>
+
   {% for article in object_list %}
     <div class="card">
       <div class="card-header">
         <a href="{% url 'article_detail' article.pk %}"><i class="fa fa-file"></i> </a><span class="font-weight-bold">{{ article.title }}</span> &middot;
         <span class="text-muted"><i class="fa fa-user"></i> {{ article.author }} |
-        <i class="fa fa-calendar"></i> {{ article.date }}</span>
+        <i class="fa fa-calendar"></i>{{ article.date }}</span>
       </div>
-      {% if article.author == user %}
       <div class="card-body">
         <p>{{ article.body }}</p>
         <a href="{% url 'article_edit' article.pk %}"><i class="fa fa-pencil"></i></a> |
         <a href="{% url 'article_delete' article.pk %}"><i class="fa fa-trash"></i></a> | <a href="{% url 'comment_new' article.pk %}"><i class="fa fa-comments"></i></a>
       </div>
-
-      {% else %}
-      <div class="card-body">
-        <p>{{ article.body }}</p>
-        <a href="{% url 'comment_new' article.pk %}"><i class="fa fa-comments"></i></a>
-      </div>
-
-      {% endif %}
       <div class="card-footer">
         <a href = "{% url 'comments_list' article.pk %}">Comments</a>
       </div>
@@ -46,3 +42,4 @@
   {% endif %}
   
 {% endblock content %}
+
