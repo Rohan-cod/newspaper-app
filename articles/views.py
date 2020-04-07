@@ -100,14 +100,14 @@ class ArticleListView(ResourceDownloadMixin, LoginRequiredMixin, ListView, table
     template_name = 'article_list.html'
     login_url = 'login'
     paginate_by = 5
-    ordering = ['-date']
+    ordering = ['-updated']
 
 class MyArticleListView(LoginRequiredMixin, ListView):
     model = Article
     template_name = 'my_articles.html'
     login_url = 'login'
     paginate_by = 5
-    ordering = ['-date']
+    ordering = ['-updated']
     def get_queryset(self):
         return Article.objects.filter(author=self.request.user)
 
