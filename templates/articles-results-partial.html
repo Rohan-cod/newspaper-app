@@ -4,7 +4,7 @@
 	{% for article in articles %}
 		<div class="card">
 			<div class="card-header">
-				<a href="{% url 'article_detail' article.pk %}"><i class="fa fa-file"></i> </a><span class="font-weight-bold">{{ article.title }}</span>  &middot;
+				<a href="{% url 'article_detail' article.pk %}"><i class="fa fa-file"></i> </a><span class="font-weight-bold">{{ article.title }}</span>
 				<br>
 				<span class="text-muted"><span class="fa fa-user"></span> {{ article.author }} &nbsp;|&nbsp;
 				 <i class="fa fa-calendar"></i> {{ article.date }}</span>

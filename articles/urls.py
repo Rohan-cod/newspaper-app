@@ -9,7 +9,9 @@ from .views import (
     CommentCreateView,
     CommentListView,
     MyArticleListView,
-    search_view
+    search_view,
+    export,
+    export_my
 )
 urlpatterns = [
     path('<int:pk>/edit/',
@@ -25,4 +27,7 @@ urlpatterns = [
     path('comments/<int:pk>/', CommentListView.as_view(), name='comments_list'),
     path('myarticles/', MyArticleListView.as_view(), name='my_articles_list'),
     path('search/', search_view, name='search'),
+    path('download/', export, name='download'),
+    path('download_my/', export_my, name='my_download'),
+
 ]

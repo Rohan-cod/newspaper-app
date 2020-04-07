@@ -2,10 +2,8 @@
 {% block title %}Notes{% endblock title %}
 
 {% block content %}
-  <h1>Django Newspaper App</h1>
+  <h1>Articles by {{user.username}} <i class="fa fa-arrow-circle-down"></i></h1>
   <hr>
-
-  <h2>Articles by {{user.username}} <i class="fa fa-arrow-circle-down"></i></h2>
   <br>
 
   {% for article in object_list %}

@@ -51,7 +51,14 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'articles.apps.ArticlesConfig',
     'social_django',
+    'django_filters',
+    'import_export',
+    #'django-import-export',
+    #'django-export-download',
+    #'django-tables2',
 ]
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

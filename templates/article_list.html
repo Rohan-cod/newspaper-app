@@ -3,10 +3,14 @@
 {% block title %}Articles{% endblock title %}
 
 {% block content %}
+
+  <h1>All Articles <i class="fa fa-arrow-circle-down"></i></h1>
+  <hr>
+  <br>
   {% for article in object_list %}
     <div class="card">
       <div class="card-header">
-        <a href="{% url 'article_detail' article.pk %}"><i class="fa fa-file"></i> </a><span class="font-weight-bold">{{ article.title }}</span> &middot;
+        <a href="{% url 'article_detail' article.pk %}"><i class="fa fa-file"></i> </a><span class="font-weight-bold">{{ article.title }}</span><br>
         <span class="text-muted"><i class="fa fa-user"></i> {{ article.author }} |
         <i class="fa fa-calendar"></i> {{ article.date }}</span>
       </div>

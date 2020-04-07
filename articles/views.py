@@ -12,6 +12,28 @@ from django.contrib.auth.forms import AdminPasswordChangeForm, PasswordChangeFor
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
+import django_tables2 as table
+from import_export import resources
+from export_download.views import ResourceDownloadMixin
+import django_filters
+from django.http import HttpResponse
+from .resources import ArticleResource
+
+
+def export(request):
+    article_resource = ArticleResource()
+    articles = article_resource.export()
+    response = HttpResponse(articles.xls, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="articles.xls"'
+    return response
+
+def export_my(request):
+    article_resource = ArticleResource()
+    queryset = Article.objects.filter(author=request.user)
+    my_articles = article_resource.export(queryset)
+    response = HttpResponse(my_articles.xls, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="my_articles.xls"'
+    return response
 
 
 @login_required
@@ -69,7 +91,11 @@ def password(request):
     return render(request, 'templates/password.html', {'form': form})
 
 
-class ArticleListView(LoginRequiredMixin, ListView):
+
+
+
+
+class ArticleListView(ResourceDownloadMixin, LoginRequiredMixin, ListView, table.SingleTableMixin):
     model = Article
     template_name = 'article_list.html'
     login_url = 'login'

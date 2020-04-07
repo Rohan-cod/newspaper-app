@@ -55,13 +55,27 @@
               aria-labelledby="userMenu">
                 <a class="dropdown-item" href="{% url 'my_articles_list' %}">My Articles</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{% url 'password_change'\
-                %}">Change password</a>
+                <a class="dropdown-item" href="{% url 'change_password' %}">Change password</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{% url 'logout' %}">
                 Log Out</a>
               </div>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link dropdown-toggle" href="#" id="downloadMenu"\
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded\
+              ="false">
+                <i class="fa fa-download"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right"\
+              aria-labelledby="downloadMenu">
+                <a class="dropdown-item" href="{% url 'download' %}">All Articles</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'my_download' %}">My Articles</a>
+              </div>
+            </li>
+
           </ul>
         {% else %}
           <form class="form-inline ml-auto">
