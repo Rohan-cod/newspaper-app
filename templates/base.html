@@ -53,6 +53,10 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right"\
               aria-labelledby="userMenu">
+                <a class="dropdown-item" href="{% url 'search_user' %}">All users</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'my_page' user.pk %}">My Profile</a>
+                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{% url 'my_articles_list' %}">My Articles</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{% url 'change_password' %}">Change password</a>

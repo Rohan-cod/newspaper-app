@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <h1> {% if object.username == user.username %}Your Details&nbsp;| &nbsp;<a href="{% url 'user_detail' object.pk %}"><i class="fa fa-pencil"></i></a>{% else %}{{ object.username }}'s Details{% endif %}</h1>
+  <hr>
+  <br>
+  <img src="{{ object.pic.url}}" alt="NO IMAGE:(">
+  <br>
+  <br>
+  <h2>Name: {{object.username}}</h2>
+  <br>
+  <h2>nickname: {{object.nick_name}}</h2>
+  <br>
+  <h2>DOB: {{object.dob}}</h2>
+  <br>
+  <h2>Gender: {{object.gender}}</h2>
+  <br>
+  <h2>Age: {{object.age}}</h2>
+  <br>
+  <h2>email: {{object.email}}</h2>
+  <br>
+{% endblock content %}
