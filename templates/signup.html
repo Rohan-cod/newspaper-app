@@ -1,16 +1,61 @@
 {% extends 'base.html' %}
 
 {% load crispy_forms_tags %}
+{% load widget_tweaks %}
 
 {% block title %}Sign Up{% endblock title %}
 
 {% block content %}
 
 <h2>Sign Up</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form|crispy }}
-  <button class="btn btn-success" type="submit">Sign Up</button>
+<form action="{% url 'signup' %}" method="POST" autocomplete="off">
+            {% csrf_token %}
+    
+            <div class="field">
+              <label for="{{ form.username.id_for_label }}" class="label">
+                Username
+              </label>
+              <div class="control">
+                {{ form.username|add_class:"input" }}
+              </div>
+              <p class="help is-danger">{{ form.username.errors }}</p>
+            </div>
+
+            <div class="field">
+              <label for="{{ form.email.id_for_label }}" class="label">
+                Email
+              </label>
+              <div class="control">
+                {{ form.email|add_class:"input" }}
+              </div>
+              <p class="help is-danger">{{ form.email.errors }}</p>
+            </div>
+
+            <div class="field">
+              <label for="{{ form.password1.id_for_label }}" class="label">
+                Password
+              </label>
+              <div class="control">
+                {{ form.password1|add_class:"input" }}
+              </div>
+              <p class="help is-danger">{{ form.password1.errors }}</p>
+            </div>
+    
+            <div class="field">
+              <label for="{{ form.password2.id_for_label }}" class="label">
+                Password Check
+              </label>
+              <div class="control">
+                {{ form.password2|add_class:"input" }}
+              </div>
+              <p class="help is-danger">{{ form.password2.errors }}</p>
+            </div>
+    
+            <div class="field">
+              <div class="control">
+                <button class="btn btn-success">Submit</button>
+              </div>
+            </div>
 </form>
 
 {% endblock content %}

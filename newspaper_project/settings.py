@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from datetime import timedelta
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -53,6 +54,9 @@ INSTALLED_APPS = [
     'social_django',
     'django_filters',
     'import_export',
+    'simple_email_confirmation',
+    'guardian',
+    'widget_tweaks',
     #'django-import-export',
     #'django-export-download',
     #'django-tables2',
@@ -96,7 +100,7 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
-
+    'guardian.backends.ObjectPermissionBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -133,6 +137,15 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
+EMAIL_CONFIRMATION_PERIOD_DAYS = 7
+SIMPLE_EMAIL_CONFIRMATION_PERIOD = timedelta(days=EMAIL_CONFIRMATION_PERIOD_DAYS)
+
+SIMPLE_EMAIL_CONFIRMATION_AUTO_ADD = False
+
+SIMPLE_EMAIL_CONFIRMATION_KEY_LENGTH = 16
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -145,6 +158,17 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  
+MAILER_EMAIL_BACKEND = EMAIL_BACKEND  
+EMAIL_HOST = 'smtp.gmail.com'  
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS') 
+EMAIL_HOST_USER = 'articlea510@gmail.com'  
+EMAIL_PORT = 587  
+EMAIL_USE_TLS = True  
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
 
@@ -167,8 +191,6 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'templates')]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

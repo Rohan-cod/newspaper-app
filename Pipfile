@@ -16,6 +16,13 @@ django-export-download = "*"
 django-import-export = "*"
 django-tables2 = "*"
 django-filter = "*"
+google-api-python-client = "==1.6.4"
+oauth2client = "==4.1.2"
+jsonpickle = "==0.9.6"
+django-simple-email-confirmation = "*"
+guardian = "*"
+django-guardian = "*"
+django-widget-tweaks = "*"
 
 [requires]
 python_version = "3.7"

@@ -1,11 +1,14 @@
 from django.db import models
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 # Create your models here.
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth import get_user_model
 from django.db import models
 from PIL import Image
 from django.contrib.auth.models import User
+from simple_email_confirmation.models import SimpleEmailConfirmationUserMixin
 
 class CustomUser(AbstractUser):
 	GENDER_CHOICES=(
@@ -15,10 +18,9 @@ class CustomUser(AbstractUser):
 		)
 	nick_name = models.CharField(max_length=100, null=True, blank=True)
 	age = models.PositiveIntegerField(null=True, blank=True)
-	pic = models.ImageField(upload_to='media/images/',default='media/images/rsz_20190606_111943-min.jpg')
+	pic = models.ImageField(upload_to='media/images/',default='media/images/profile.jpg')
 	dob = models.DateField(null=True)
 	gender = models.CharField(max_length=20, default="not mentioned", choices=GENDER_CHOICES)
-	
 
 	def save(self, *args, **kwargs):
 		super().save()
@@ -50,6 +52,8 @@ class CustomUser(AbstractUser):
 			img.thumbnail((300, 300))
 
 		img.save(self.pic.path)
+
+	
 
 	def __str__(self):
 		return self.nick_name

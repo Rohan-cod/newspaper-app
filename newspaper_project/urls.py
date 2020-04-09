@@ -21,7 +21,6 @@ from django.contrib.auth.views import LoginView
 from articles import views
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
-
 urlpatterns = [
     path(
         'change-password/',
