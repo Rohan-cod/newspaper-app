@@ -6,7 +6,7 @@ A web app made using `django` framework. The frontend is made using `html` and `
 ## Requirements
 
 Python 3.7  
-Django 2.2.8  
+Django 2.2.10
 And additional requirements are in **Pipfile**.
 
 ## Setting up the Project
