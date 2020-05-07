@@ -23,14 +23,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'rj#k+c_xc74o3ln8(170pb9wy@us@-5a$*%h(2007qt53w(o)+'
 
-SOCIAL_AUTH_GOOGLE_KEY = "244148125235-3fg0ft534ktn89ldgdlov0k3thmiq49v.apps.googleusercontent.com"
-SOCIAL_AUTH_GOOGLE_SECRET = "O3GwC8hSylVtspcsQ5Qa0Xuk"
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('I_D') 
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('SEC_RET') 
 
-SOCIAL_AUTH_FACEBOOK_KEY = '2876127119066596'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'a34691d46e35146e7c53d1035ac086b7'
+SOCIAL_AUTH_FACEBOOK_KEY = ''
+SOCIAL_AUTH_FACEBOOK_SECRET = ''
 
-SOCIAL_AUTH_GITHUB_KEY = '73d9ea86df0058462b6a'
-SOCIAL_AUTH_GITHUB_SECRET = '2f3fb3544b31c60c9607d89228ac81ef235820f7'
+SOCIAL_AUTH_TWITTER_KEY = ''
+SOCIAL_AUTH_TWITTER_SECRET = ''
+
+SOCIAL_AUTH_GITHUB_KEY = ''
+SOCIAL_AUTH_GITHUB_SECRET = ''
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -57,6 +60,7 @@ INSTALLED_APPS = [
     'simple_email_confirmation',
     'guardian',
     'widget_tweaks',
+    'social.apps.django_app.default',
     #'django-import-export',
     #'django-export-download',
     #'django-tables2',
@@ -96,13 +100,21 @@ TEMPLATES = [
     },
 ]
 
+
+
 AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    #'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.github.GithubOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.facebook.FacebookOAuth2',
+    #'social_core.backends.twitter.TwitterOAuth',
+    #'social_core.backends.facebook.FacebookOAuth2',
     'guardian.backends.ObjectPermissionBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+ROOT_URLCONF = 'newspaper_project.urls'
 
 WSGI_APPLICATION = 'newspaper_project.wsgi.application'
 
@@ -181,9 +193,12 @@ MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
-SOCIAL_AUTH_LOGIN_ERROR_URL = '/settings/'
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/settings/'
-SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+#SOCIAL_AUTH_LOGIN_ERROR_URL = '/settings/'
+#SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/settings/'
+#SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+#SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+#LOGIN_URL = '/auth/login/google-oauth2/'
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'

@@ -22,6 +22,7 @@ from articles import views
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 urlpatterns = [
+    #path('', include('social_django.urls', namespace='social')),
     path(
         'change-password/',
         auth_views.PasswordChangeView.as_view(
@@ -36,8 +37,9 @@ urlpatterns = [
     url(r'^login/$',LoginView.as_view(), name='login'),
     #url(r'^logout/$', LogoutView.as_view(), name='logout'), 
     path('articles/', include('articles.urls')),
-    url(r'^oauth/', include('social_django.urls', namespace='social')),
+    #url(r'^oauth/', include('social_django.urls', namespace='social')),
     path('', include('pages.urls')),  
+    path('', include('social.apps.django_app.urls', namespace='social')),
     #url(r'^settings/$', views.settings, name='settings'),
     #url(r'^settings/password/$', views.password, name='password'),
 ]
