@@ -74,9 +74,13 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right"\
               aria-labelledby="downloadMenu">
-                <a class="dropdown-item" href="{% url 'download' %}">All Articles</a>
+                <a class="dropdown-item" href="{% url 'download_csv' %}">All Articles CSV</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{% url 'my_download' %}">My Articles</a>
+                <a class="dropdown-item" href="{% url 'my_download_csv' %}">My Articles CSV</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'download_json' %}">All Articles JSON</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'my_download_json' %}">My Articles JSON</a>
               </div>
             </li>
 

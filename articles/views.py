@@ -19,21 +19,37 @@ import django_filters
 from django.http import HttpResponse
 from .resources import ArticleResource
 
+def export_json(request):
+    article_resource = ArticleResource()
+    articles = article_resource.export()
+    response = HttpResponse(articles.json, content_type='application/json')
+    response['Content-Disposition'] = 'attachment; filename="articles.json"'
+    return response
 
-def export(request):
+
+def export_csv(request):
     article_resource = ArticleResource()
     articles = article_resource.export()
     response = HttpResponse(articles.xls, content_type='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename="articles.xls"'
     return response
 
-def export_my(request):
+def export_my_csv(request):
     article_resource = ArticleResource()
     queryset = Article.objects.filter(author=request.user)
     my_articles = article_resource.export(queryset)
     response = HttpResponse(my_articles.xls, content_type='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename="my_articles.xls"'
     return response
+
+def export_my_json(request):
+    article_resource = ArticleResource()
+    queryset = Article.objects.filter(author=request.user)
+    my_articles = article_resource.export(queryset)
+    response = HttpResponse(my_articles.json, content_type='application/json')
+    response['Content-Disposition'] = 'attachment; filename="my_articles.json"'
+    return response
+
 
 
 @login_required

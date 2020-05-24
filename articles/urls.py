@@ -10,8 +10,10 @@ from .views import (
     CommentListView,
     MyArticleListView,
     search_view,
-    export,
-    export_my
+    export_csv,
+    export_my_csv,
+    export_json,
+    export_my_json
 )
 urlpatterns = [
     path('<int:pk>/edit/',
@@ -27,7 +29,9 @@ urlpatterns = [
     path('comments/<int:pk>/', CommentListView.as_view(), name='comments_list'),
     path('myarticles/', MyArticleListView.as_view(), name='my_articles_list'),
     path('search/', search_view, name='search'),
-    path('download/', export, name='download'),
-    path('download_my/', export_my, name='my_download'),
+    path('download_csv/', export_csv, name='download_csv'),
+    path('download_my_csv/', export_my_csv, name='my_download_csv'),
+    path('download_json/', export_json, name='download_json'),
+    path('download_my_json/', export_my_json, name='my_download_json'),
 
 ]
