@@ -8,6 +8,7 @@ Django==2.2.13
 django-crispy-forms==1.7.2
 django-export-download==0.2.3
 django-filter==2.4.0
+django-guardian==2.3.0
 django-import-export==2.4.0
 django-simple-email-confirmation==0.70
 django-tables2==2.3.3
