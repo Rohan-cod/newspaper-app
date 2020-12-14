@@ -37,6 +37,92 @@
             <li class="nav-item"><a href="{% url 'search' %}"><i class="fa fa-search"></i></a></li>
         </ul>
       {% endif %}
+      {% if user.is_authenticated %}
+      <ul class="second-level-menu menu">
+          <li class="nav-items ripple-effect">
+            <a href="#" style="background:transparent" class="second-level-child second-level-child-0 notactive notactive url-type-external">My Feed</a>
+          </li>
+          <li class="nav-items ripple-effect">
+            <a href="#" style="background:transparent" class="second-level-child second-level-child-1 notactive notactive url-type-external">INDIA</a>
+
+          </li>
+          <li class="nav-items ripple-effect">
+            <a href="#" style="background:transparent" class="second-level-child second-level-child-2 notactive notactive url-type-external">WORLD</a>
+                   
+          </li>
+          <li class="nav-items ripple-effect">
+            <a href="#" style="background:transparent" class="second-level-child second-level-child-3 notactive notactive url-type-external">HEALTH</a>
+                   
+          </li>
+          <li class="nav-items ripple-effect">
+            <a href="#" style="background:transparent" class="second-level-child second-level-child-4 notactive notactive url-type-external">CORONA</a>
+                   
+          </li>
+          <li class="nav-items ripple-effect">
+            <a href="#" style="background:transparent" class="second-level-child second-level-child-5 notactive notactive url-type-external">GAMING</a>
+                   
+          </li>
+          <li class="nav-items ripple-effect">
+            <a href="#" style="background:transparent" class="second-level-child second-level-child-6 notactive notactive url-type-external">FACT CHECK</a>
+                   
+          </li>
+          <li class="nav-items ripple-effect">
+            <a href="#" style="background:transparent" class="second-level-child second-level-child-7 notactive notactive url-type-external">MOVIES</a>
+                   
+          </li>
+          <li class="nav-items ripple-effect">
+            <a href="#" style="background:transparent" class="second-level-child second-level-child-8 notactive notactive url-type-external">SPORTS</a>
+                   
+          </li>
+        </ul>
+      {% endif %}
+      {% if user.is_authenticated %}
+<div class="more">
+        <button id="more-btn" class="more-btn">
+            <span class="more-dot"></span>
+            <span class="more-dot"></span>
+            <span class="more-dot"></span>
+        </button>
+        <div class="more-menu">
+            <div class="more-menu-caret">
+                <div class="more-menu-caret-outer"></div>
+                <div class="more-menu-caret-inner"></div>
+            </div>
+            <ul class="more-menu-items" tabindex="-1" role="menu" aria-labelledby="more-btn" aria-hidden="true">
+                <li class="more-menu-item" role="presentation">
+                    <button type="button" class="more-menu-btn" role="menuitem">CITIES</button>
+                </li>
+                <li class="more-menu-item" role="presentation">
+                    <button type="button" class="more-menu-btn" role="menuitem">EDUCATION</button>
+                </li>
+                <li class="more-menu-item" role="presentation">
+                    <button type="button" class="more-menu-btn" role="menuitem">TECH</button>
+                </li>
+                <li class="more-menu-item" role="presentation">
+                    <button type="button" class="more-menu-btn" role="menuitem">VIDEOS</button>
+                </li>
+                <li class="more-menu-item" role="presentation">
+                    <button type="button" class="more-menu-btn" role="menuitem">TELEVISION</button>
+                </li>
+                <li class="more-menu-item" role="presentation">
+                    <button type="button" class="more-menu-btn" role="menuitem">PROGRAMME</button>
+                </li>
+                <li class="more-menu-item" role="presentation">
+                    <button type="button" class="more-menu-btn" role="menuitem">TRENDING</button>
+                </li>
+                <li class="more-menu-item" role="presentation">
+                    <button type="button" class="more-menu-btn" role="menuitem">BINGE WATCH</button>
+                </li>
+                <li class="more-menu-item" role="presentation">
+                    <button type="button" class="more-menu-btn" role="menuitem">LIFESTYLE</button>
+                </li>
+                <li class="more-menu-item" role="presentation">
+                    <button type="button" class="more-menu-btn" role="menuitem">BUSINESS</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+      {% endif %}
       <button class="navbar-toggler" type="button" data-toggle="collapse"\
       data-target="#navbarCollapse" aria-controls="navbarCollapse"\
       aria-expanded="false" aria-label="Toggle navigation">
@@ -153,6 +239,176 @@
           opacity: 1;
           visibility: visible;
         }
+        .second-level-menu.menu{
+          zoom:1;
+        }
+        ul{
+          list-style:none;
+
+        }
+        .menu li{
+          float:left;
+          top:10px;
+          padding:5px;
+        }
+        .ripple-effect{
+          position:relative;
+          overflow:hidden;
+        }
+        .menu li a{
+          color:#e0e0e0;
+          text-transform:uppercase;
+          font-weight:500;
+          padding:0 10px;
+          border-top:none;
+          height:37px;
+          white-space:nowrap;
+          position:relative;
+          font-size:.875rem;
+          line-height:37px;
+        }
+        a{
+          font-family:Opensans-Regular;
+        }
+        a{
+          margin:0;
+          padding:0;
+          font-size:100%;
+          vertical-align:baseline;
+          background:0 0;
+          color:#000;
+          text-decoration:none;
+                }
+        ..more-menu {
+    width: 100px;
+}
+
+/* More Button / Dropdown Menu */
+
+.more-btn,
+.more-menu-btn {
+    background: none;
+    border: 0 none;
+    line-height: normal;
+    overflow: visible;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    cursor: pointer;
+}
+
+.more-dot {
+    background-color: #aab8c2;
+    margin: 0 auto;
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 1px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.more-menu {
+    position: absolute;
+    top: 100%;
+    z-index: 900;
+    float: left;
+    padding: 10px 0;
+    margin-top: 9px;
+    background-color: #fff;
+    border: 1px solid #ccd8e0;
+    border-radius: 4px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.25);
+    opacity: 0;
+    transform: translate(0, 15px) scale(.95);
+    transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+    pointer-events: none;
+}
+
+.more-menu-caret {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    width: 18px;
+    height: 10px;
+    float: left;
+    overflow: hidden;
+}
+
+.more-menu-caret-outer,
+.more-menu-caret-inner {
+    position: absolute;
+    display: inline-block;
+    margin-left: -1px;
+    font-size: 0;
+    line-height: 1;
+}
+
+.more-menu-caret-outer {
+    border-bottom: 10px solid #c1d0da;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    height: auto;
+    left: 0;
+    top: 0;
+    width: auto;    
+}
+
+.more-menu-caret-inner {
+    top: 1px;
+    left: 1px;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid #fff;
+}
+
+.more-menu-items {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+
+.more-menu-item {
+    display: block;
+}
+
+.more-menu-btn {
+    min-width: 100%;
+    color: #66757f;
+    cursor: pointer;
+    display: block;
+    font-size: 13px;
+    line-height: 18px;
+    padding: 5px 20px;
+    position: relative;
+    white-space: nowrap;
+}
+
+.more-menu-item:hover {
+    background-color: #489fe5;
+}
+
+.more-menu-item:hover .more-menu-btn {
+    color: #fff;
+}
+
+.more-btn:hover .more-dot,
+.show-more-menu .more-dot {
+    background-color: #516471;
+}
+
+.show-more-menu .more-menu {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+    pointer-events: auto;
+}
+
+*{
+  box-sizing: border-box;
+}
 
     </style>
        <a id="button"></a>
@@ -186,6 +442,36 @@
 
 
     </script>
+    <script>
+ var el = document.querySelector('.more');
+var btn = el.querySelector('.more-btn');
+var menu = el.querySelector('.more-menu');
+var visible = false;
+
+function showMenu(e) {
+    e.preventDefault();
+    if (!visible) {
+        visible = true;
+        el.classList.add('show-more-menu');
+        menu.setAttribute('aria-hidden', false);
+        document.addEventListener('mousedown', hideMenu, false);
+    }
+}
+
+function hideMenu(e) {
+    if (btn.contains(e.target)) {
+        return;
+    }
+    if (visible) {
+        visible = false;
+        el.classList.remove('show-more-menu');
+        menu.setAttribute('aria-hidden', true);
+        document.removeEventListener('mousedown', hideMenu);
+    }
+}
+
+btn.addEventListener('click', showMenu, false);
+</script>   
     
   </body>
 </html>
