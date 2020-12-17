@@ -3,12 +3,24 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-<div class="jumbotron">
-  <h1 class="display-4">Newspaper app</h1>
-  <p class="lead">A Newspaper website built with Django.</p>
+<div class="jumbotron ">
+  <style>
+    .jumbotron{
+      background-image: url("https://images.unsplash.com/photo-1597852224513-23f6e8cdeccb?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NDR8fG5ld3NwYXBlcnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60,width-800,height-600,resizemode-75,imgsize-3918697,pt-32,y_pad-40/67586673.jpg");
+      background-size: cover;
+      height: 100%;
+      margin-top: -25px;
+      margin-left: -300px;
+      margin-right: -300px;
+      padding-bottom: 410px;
+    }
+  </style>
+  <h1 class="display-2"style="text-align:center"><mark style="background-color: yellow;">Newspaper App</mark></h1>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}"
+    <div class="text-center"style="margin-top:150px;">
+    <a class="btn btn-primary btn-lg"href="{% url 'article_list' %}"
     role="button">View All Articles</a>
+  </div>
   </p>
 </div>
 {% endblock content %}
