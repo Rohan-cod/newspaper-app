@@ -7,8 +7,7 @@
 
 {% block content %}
 
-<h2 style="text-align:center;">Sign Up</h2><hr><br><br>
-<div class="container"style="max-width:248px;">
+<h2>Sign Up</h2>
 <form action="{% url 'signup' %}" method="POST" autocomplete="off">
             {% csrf_token %}
     
@@ -53,10 +52,10 @@
             </div>
     
             <div class="field">
-              <div class="control"><br>
-                <button class="btn btn-success ml-2"style="margin-left: 4.1rem !important;">Submit</button>
+              <div class="control">
+                <button class="btn btn-success">Submit</button>
               </div>
             </div>
 </form>
-</div>
+
 {% endblock content %}

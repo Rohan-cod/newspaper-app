@@ -14,24 +14,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css">
   </header>
 
-<body>
-<h2 style="text-align:center;">Log In</h2>
+<h2>Log In</h2>
 <hr>
-<div class="container">
-  <style>
-      .container{
-        max-width: 248px;
-      }
-  </style>
-<form class="form"method="post">
+
+<form method="post">
   {% csrf_token %}
   {{ form.as_p }}
-  <button class="btn btn-success ml-2" style="margin-left: 4.1rem !important;"type="submit">Log In</button>
+  <button class="btn btn-success ml-2" type="submit">Log In</button>
 </form>
-</div>
-<p style="text-align: left;margin-bottom: 1rem;margin-top: 39px;margin-left: 45px;"><strong>Login with </strong>
-<a href="{% url 'social:begin' 'google-oauth2' %}"><i class="fa fa-google w3-xxlarge ml-1"></i></a> &nbsp;&nbsp;<a href="{% url 'social:begin' 'facebook' %}" ><i class="fa fa-facebook w3-xxlarge ml-1"></i></a>&nbsp;&nbsp;<a  href="{% url 'social:begin' 'github' %}"><i class="fa fa-github w3-xxlarge ml-1"></i></a>
-</p>
+<hr>
+<p><strong>Login with</strong></p>
+
+<a href="{% url 'social:begin' 'google-oauth2' %}"><i class="fa fa-google w3-xxlarge"></i></a> &nbsp;|&nbsp;<a href="{% url 'social:begin' 'facebook' %}" ><i class="fa fa-facebook w3-xxlarge"></i></a>&nbsp;|&nbsp;<a  href="{% url 'social:begin' 'github' %}"><i class="fa fa-github w3-xxlarge"></i></a>
+  
+<body>
+    
+
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script>
       $('#github-button').on('click', function() {
@@ -58,4 +56,6 @@
       })
     </script>
   </body>
+
+
 {% endblock content %}
