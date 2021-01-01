@@ -100,8 +100,8 @@ def password(request):
             update_session_auth_hash(request, form.user)
             messages.success(request, 'Your password was successfully updated!')
             return redirect('password')
-        else:
-            messages.error(request, 'Please correct the error below.')
+        messages.error(request, 'Please correct the error below.')
+        
     else:
         form = PasswordForm(request.user)
     return render(request, 'templates/password.html', {'form': form})

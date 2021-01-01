@@ -8,5 +8,6 @@ class ArticleResource(resources.ModelResource):
 		model = Article
 		fields = ['title','date']
 
-	def dehydrate_author(self, article):
+	@staticmethod
+	def dehydrate_author(article):
 		return f'{article.author.username}'

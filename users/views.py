@@ -20,16 +20,13 @@ from django.http import HttpResponse
 
 
 
-from django.shortcuts import render, redirect 
-from django.contrib import messages 
-from django.contrib.auth import authenticate, login 
-from django.contrib.auth.decorators import login_required 
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm  
 from django.core.mail import send_mail 
 from django.core.mail import EmailMultiAlternatives 
 from django.template.loader import get_template 
 from django.template import Context
-from django.views.generic import View, UpdateView
+from django.views.generic import View
 from django.utils.encoding import force_bytes, force_text  
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode  
 from django.contrib import messages
@@ -62,10 +59,12 @@ from .tokens import user_tokenizer
 
 
 class SignUpView(View):
-    def get(self, request):
+    @staticmethod
+    def get(request):
         return render(request, 'signup.html', { 'form': CustomUserCreationForm() })
 
-    def post(self, request):
+    @staticmethod
+    def post(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
@@ -89,6 +88,7 @@ class SignUpView(View):
         return render(request, 'signup.html', { 'form': form })
 		 
 class ConfirmRegistrationView(View):
+    @staticmethod
     def get(self, request, user_id, token):
         user_id = force_text(urlsafe_base64_decode(user_id))
         
