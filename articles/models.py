@@ -71,6 +71,7 @@ class Comment(models.Model): # new
 	def __str__(self):
 		return self.comment
 
-	def get_absolute_url(self):
+	@staticmethod
+	def get_absolute_url():
 		return reverse('article_list')
 
