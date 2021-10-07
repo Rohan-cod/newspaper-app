@@ -1,7 +1,7 @@
 
 # Newspaper App
 
-A web app made using `django` framework. The frontend is made using `html` and `bootstrap` and `sqlite3` is used as the database. You can add articles which can be viewed by anyone. Just make an account and you are good to go.
+A web app made using the `django` framework. Frontend using `html` and `bootstrap` and `sqlite3` is used as the database. You can add articles which can be viewed by anyone. Just make an account and you are good to go.
 
 ## Requirements
 
@@ -50,6 +50,6 @@ To get started, the first step is to meet the community. We use slack to communi
 
 ## Code Of Conduct
 
-Check the code of conduct [here](https://github.com/Rohan-cod/newspaper-app/blob/master/CODE_OF_CONDUCT.md).
+Check the [code of conduct](https://github.com/Rohan-cod/newspaper-app/blob/master/CODE_OF_CONDUCT.md).
 
 
