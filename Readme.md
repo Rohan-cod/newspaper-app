@@ -5,13 +5,13 @@ A web app made using the `django` framework. Frontend using `html` and `bootstra
 
 ## Requirements
 
-Python 3.7  
+Python 3.8  
 Django 2.2.10
 And additional requirements are in **Pipfile**.
 
 ## Setting up the Project
 
-  * Download and install Python 3.7
+  * Download and install Python 3.8
   * Download and install Git.
   * Fork the Repository.
   * Clone the repository to your local machine `$ git clone https://github.com/<your-github-username>/newspaper-app.git`
